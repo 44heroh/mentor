@@ -9,6 +9,7 @@ public class MyList
     private Object[] buffer;
     private int length;
     private int size;
+    private static final double commonMulti = 2;
 
     public MyList()
     {
@@ -39,9 +40,9 @@ public class MyList
 //                    Ставим отметку то что элемент удалён
                     isRemoved = true;
 //                Проверяем если длина - 1 равна половине размера
-                    if(length - 1 == size / 2){
+                    if(length - 1 == size / commonMulti){
 //                    То уменьшаем размер в 2 раза
-                        size /= 2;
+                        size /= commonMulti;
 //                    Уменьшаем длину на 1
                         length--;
 //                    Копируем это в новый массив c новым размером
@@ -91,8 +92,8 @@ public class MyList
     {
 //        Если длина строки >= размеру
         if(length >= size) {
-//            увеличиваем размер в 2 раза
-            size *= 2;
+//            увеличиваем размер в n раза
+            size *= commonMulti;
 //            Копируем в новый массив с новым размером старый массив
             Object[] newArr = copyToNewArr(new Object[size]);
 //            Присваиваем старому массиву новый
@@ -113,7 +114,7 @@ public class MyList
      */
     private Object[] copyToNewArr(Object[] newArr)
     {
-//        По символьно копируем из одного массива в другой
+//        По элементно копируем из одного массива в другой
         for(int i = 0; i < length; i++){
             newArr[i] = buffer[i];
         }

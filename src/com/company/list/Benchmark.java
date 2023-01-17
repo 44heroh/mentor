@@ -19,7 +19,7 @@ public class Benchmark {
     @Fork(value = 1, warmups = 1)
     @Warmup(iterations = 1)
     @org.openjdk.jmh.annotations.Benchmark
-    @BenchmarkMode(Mode.AverageTime)
+    @BenchmarkMode(Mode.All)
     public void init() {
         MyList list = new MyList();
         for(int i = 0; i < listSize; i++){
