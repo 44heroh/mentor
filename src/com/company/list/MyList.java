@@ -89,23 +89,15 @@ public class MyList
      */
     public boolean add(Object value)
     {
-        /*if(length > 0) {
-            System.out.println();
-        }*/
-
 //        Если длина строки >= размеру
         if(length >= size) {
 //            увеличиваем размер в 2 раза
             size *= 2;
-//            System.out.println(Arrays.toString(new Object[size]));
 //            Копируем в новый массив с новым размером старый массив
             Object[] newArr = copyToNewArr(new Object[size]);
-//            System.out.println(Arrays.toString(newArr));
 //            Присваиваем старому массиву новый
             buffer = newArr;
         }
-//        System.out.println("length = " + length);
-//        System.out.println("size = " + size);
 //        Добавляем в старый массив по ключу элемент
         buffer[length] = value;
 //        Увеличиваем строку на 1

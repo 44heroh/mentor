@@ -12,7 +12,6 @@ public class Benchmark {
         MyList list = new MyList();
         for(int i = 1; i < 514; i++){
             list.add(i);
-//            System.out.println(Arrays.toString(list.getBuffer()));
         }
     }
 }
