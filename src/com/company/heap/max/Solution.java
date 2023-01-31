@@ -10,17 +10,26 @@ import java.util.PriorityQueue;
 @State(Scope.Benchmark)
 public class Solution {
 
+    // из массива найти 5 максимальных элементов(тесты которые это показывают([1-10][10-1][рандомный массив]))
+//    public static void main(String[] args) throws Exception {
+//        int[] nums = {1, 2, 4, 5, 6, 8, 9, 10, 11, 16, 20};
+//        int k = 5;
+////        findTopFiveElementsPriorityQueue(nums, k);
+//    }
+
     public static Object[] addArrayToMaxHeap() {
         int[] nums = {1, 2, 4, 5, 6, 8, 9, 10, 11, 16, 20};
         MaxHeap maxHeap = new MaxHeap<>();
         for(int i = 0; i < nums.length; i++) {
             maxHeap.add(nums[i]);
+            maxHeap.displayHeap();
         }
 
         Object[] top = new Object[5];
         for(int i = 0; i < 5; i++) {
             top[i] = maxHeap.peek();
             maxHeap.remove(maxHeap.peek());
+            maxHeap.displayHeap();
         }
 
         return top;
@@ -79,6 +88,15 @@ public class Solution {
         }
 
         return top;
+    }
+
+    public static Object[] addArrayOrderedToMaxHeapByArr() {
+        MaxHeapByArray maxHeap = new MaxHeapByArray<>(5);
+        for(int i = 0; i < 11; i++) {
+            maxHeap.add(i);
+        }
+
+        return maxHeap.getList();
     }
 
     /**

@@ -36,4 +36,11 @@ class SolutionTest {
         Object[] expected = {20, 16, 8, 9, 11, 2, 6, 1, 5, 4, 10, null, null, null, null, null, null, null, null, null};
         assertArrayEquals(actual, expected);
     }
+
+    @Test
+    void addArrayOrderedToMaxHeapByArr() {
+        Object[] actual = Solution.addArrayOrderedToMaxHeapByArr();
+        Object[] expected = {10, 8, 9, 6, 7};
+        assertArrayEquals(actual, expected);
+    }
 }
