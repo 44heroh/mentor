@@ -1,0 +1,24 @@
+package com.company.hashmap;
+
+public class Node {
+    public Object value;
+    public Node next;
+
+    public Node(Object value) {
+        this.value = value;
+        this.next = null;
+    }
+
+    public Node(Object value, Node next) {
+        this.value = value;
+        this.next = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                ", next=" + next +
+                '}';
+    }
+}

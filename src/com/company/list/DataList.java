@@ -1,5 +1,9 @@
 package com.company.list;
 
+import com.company.hashmap.LinkedList;
+
+import java.util.Arrays;
+
 public class DataList<E> {
     private static final int commonMulti = 2;
     private Object[] elements;
@@ -99,7 +103,7 @@ public class DataList<E> {
     }
 
     /**
-     * Получаем элемент
+     * Получаем элемент по индексу
      * @param index
      * @return
      */
@@ -112,13 +116,31 @@ public class DataList<E> {
      * @param e
      * @return
      */
-    public Object getIndex(E e) {
+    public Integer getIndex(E e) {
         for(int i = 0; i < elements.length; i++) {
-            if(elements[i].equals(e)) {
-                return i;
+            if(elements[i] != null) {
+                if(elements[i].equals(e)) {
+                    return i;
+                }
+            } else {
+                break;
             }
         }
         return null;
+    }
+
+    /**
+     * Проверка на существование элемента в массиве
+     * @param e
+     * @return
+     */
+    public boolean isExist(E e) {
+        for(int i = 0; i < elements.length; i++) {
+            if(elements[i].equals(e)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -161,5 +183,13 @@ public class DataList<E> {
      */
     public void updateElem(int index, Object value) {
         elements[index] = value;
+    }
+
+    /**
+     * проверка на пустоту
+     * @return
+     */
+    public boolean isEmpty() {
+        return size == 0 || elements == null;
     }
 }
