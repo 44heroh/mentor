@@ -8,14 +8,11 @@ public class MaxHeapByArray<E> {
     private Object[] list;
     private int size;
     private int capacity;
-    private int minimum;
-    private int minIndex;
 
     public MaxHeapByArray(int capacity) {
         list = new Object[capacity];
         size = 0;
         this.capacity = capacity;
-        minimum = Integer.MAX_VALUE;
     }
 
     /**
@@ -139,10 +136,6 @@ public class MaxHeapByArray<E> {
      * @param e
      */
     public void add(E e) {
-        // ищем минимальный элемент
-        if(minimum > (int) e)
-            minimum = (int) e;
-
         if(capacity <= size) {
             // изменяем массив на новый массив с размером(size + 1) и длиной size
             modifyArr(new Object[size + 1], size);
@@ -152,7 +145,7 @@ public class MaxHeapByArray<E> {
         // просеиваем вверх
         siftUp(size);
 
-        if(capacity <= size) {
+        if(capacity == size) {
             // удаляем минимальный элемент
             removeMinElement();
             // изменяем массив на новый массив с размером(size + 1) и длиной size + 1
@@ -206,30 +199,39 @@ public class MaxHeapByArray<E> {
     }
 
     /**
+     * Поиск индекса минимального значения в массиве
+     * @return
+     */
+    private int findMinElementIndex() {
+        int minimum = Integer.MAX_VALUE;
+        Integer minIndex = null;
+        for(int i = list.length - 1; i >= 0; i--) {
+            // ищем минимальный элемент
+            if((int)list[i] <= minimum){
+                minimum = (int)list[i];
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
+    }
+
+    /**
      * Удаление по индексу
      */
     public void removeMinElement() {
         // Находим индекс минимального элемента
-        for(int i = 0; i < list.length; i++) {
-            if(list[i].equals(minimum)) {
-                minIndex = i;
-                break;
-            }
-        }
+        int minIndex = findMinElementIndex();
 
         int sizeTmp = size;
-        // если minIndex != последнему индексу
-        if(minIndex != size - 1) {
-            for(int i = minIndex; i < sizeTmp; i++) {
-                // то каждый элемент начиная с него приравниваем следующему
-                if(i >= minIndex) {
-                    list[i] = list[i + 1];
-                }
+        // Проходим по массиву
+        for(int i = minIndex; i < list.length - 1; i++) {
+            // то каждый элемент начиная с него приравниваем следующему
+            if(i >= minIndex) {
+                list[i] = list[i + 1];
             }
-            // если index == последнему индексу
-        } else if(minIndex == size - 1) {
-            list[minIndex] = null;
         }
+        list[size] = null;
         // уменьшшаем размер
         size--;
     }

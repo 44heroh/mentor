@@ -92,10 +92,12 @@ public class Solution {
 
     public static Object[] addArrayOrderedToMaxHeapByArr() {
         MaxHeapByArray maxHeap = new MaxHeapByArray<>(5);
-        for(int i = 0; i < 11; i++) {
+        for(int i = 0; i < 10; i++) {
             maxHeap.add(i);
         }
 
+        maxHeap.displayHeap();
+        System.out.println(Arrays.toString(maxHeap.getList()));
         return maxHeap.getList();
     }
 
