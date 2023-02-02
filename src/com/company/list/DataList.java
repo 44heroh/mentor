@@ -1,7 +1,5 @@
 package com.company.list;
 
-import com.company.hashmap.LinkedList;
-
 import java.util.Arrays;
 
 public class DataList<E> {
@@ -108,7 +106,8 @@ public class DataList<E> {
      * @return
      */
     public Object get(int index) {
-        return elements[index];
+        Object element = elements[index];
+        return element;
     }
 
     /**
@@ -116,7 +115,7 @@ public class DataList<E> {
      * @param e
      * @return
      */
-    public Integer getIndex(E e) {
+    public Integer getIndex(int e) {
         for(int i = 0; i < elements.length; i++) {
             if(elements[i] != null) {
                 if(elements[i].equals(e)) {
