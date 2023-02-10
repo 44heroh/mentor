@@ -135,7 +135,7 @@ public class MaxHeapByArray<E> {
      * Добавление элемента
      * @param e
      */
-    public void add(E e) {
+    public void add1(E e) {
         if(capacity <= size) {
             // изменяем массив на новый массив с размером(size + 1) и длиной size
             modifyArr(new Object[size + 1], size);
@@ -153,6 +153,25 @@ public class MaxHeapByArray<E> {
             // просеиваем вверх
             siftUp(size);
         }
+        // увеличиваем размер
+        size++;
+    }
+
+    /**
+     * Добавление элемента
+     * @param e
+     */
+    public void add(E e) {
+
+        if(capacity == size) {
+            if((int)list[size] < (int)e) {
+                size--;
+            }
+        }
+        // добавляем в список
+        list[size] = e;
+        // просеиваем вверх
+        siftUp(size);
         // увеличиваем размер
         size++;
     }
