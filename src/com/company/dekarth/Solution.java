@@ -7,6 +7,7 @@ public class Solution {
         dekarth();
         String string = "102";
         int num = parseStringToInt(string);
+        System.out.println(num);
         System.out.println(parseIntToString(num));
 
         num = 1;
@@ -39,44 +40,38 @@ public class Solution {
     }
 
     public static int binaryDivision(int dividend, int divisor) {
-        int result = 0;
-        while(divisor * result < dividend) {
-            result += 1;
-        }
-        if(divisor * result > dividend) {
-            result -= 1;
-        }
-        return result;
+        return (int) dividend / divisor;
     }
 
     public static String parseIntToString(int num) {
 
         StringBuilder result = new StringBuilder();
-        while(num != 0) {
-            result.append(num);
+        String res = "";
+        while(num > 0) {
+            res = num % 10 + res;
             num /= 10;
-            num %= 10;
         }
-        return result.toString();
+        return res;
     }
 
     public static int parseStringToInt(String str) {
         int result = 0;
         boolean isMinus = false;
         for(int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            System.out.println("char = " + ch);
             int tmpVal = 0;
-            if(str.charAt(i) == '-') {
+            if(ch == '-') {
                 isMinus = true;
             } else {
-                tmpVal = Integer.parseInt(String.valueOf(str.charAt(i)));
+                tmpVal = ch - '0';
+                System.out.println("int = " + tmpVal);
             }
 
-            if(str.charAt(i) != '-'){
-                if(isMinus) {
-                    result -= tmpVal;
-                } else {
-                    result += tmpVal;
-                }
+            if(isMinus) {
+                result -= tmpVal;
+            } else {
+                result += tmpVal;
             }
 
             if(str.length() - 1 > i) {
