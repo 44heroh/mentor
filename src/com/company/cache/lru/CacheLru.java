@@ -37,30 +37,17 @@ public class CacheLru {
         return cache_vals;
     }
 
+
     /**
      * Ищем элемент
      * @param key
      * @return
      */
     DoublyLinkedListNode get(Object key) {
-        //Если не существует в HashMap
         if(!cache.containsKey(key)) {
             return null;
         } else {
-            // создаём элемент для обхода списка(текущий)
-            DoublyLinkedListNode current = cache_vals.getHead();
-            while(current != null) {
-                // если текущий равен ключу
-                if(current.key.equals(key)) {
-                    break;
-                }
-                // передвигаем элемент к следующему
-                current = current.next;
-            }
-
-            // создаём элемент для поиска
-            DoublyLinkedListNode find = current;
-            // если find.next != null
+            DoublyLinkedListNode find = cache.get(key);
             if(find.next != null) {
                 DoublyLinkedListNode prev = null;
                 DoublyLinkedListNode next = null;
@@ -72,7 +59,6 @@ public class CacheLru {
                     // устанавливаем следующий головой списка
                     this.cache_vals.setHead(next);
                 } else {
-
                     prev = find.prev;
                     next = find.next;
                     // если prev != null и next != null
@@ -93,10 +79,8 @@ public class CacheLru {
                 // устанавливаем искомый концом списка
                 this.cache_vals.setLast(find);
             }
-
             return find;
         }
-
     }
 
     /**
@@ -114,7 +98,7 @@ public class CacheLru {
             // создаём новый узел
             DoublyLinkedListNode newNode = new DoublyLinkedListNode(key, value);
             // добавляем в конец списка
-            cache_vals.insertLast(value);
+            cache_vals.insertLastNode(newNode);
             // добавляем в HashMap
             cache.put(key, newNode);
         } else {

@@ -16,6 +16,32 @@ public class DoublyLinkedList {
     }
 
     /**
+     * Вставка в начало списка
+     * @param node
+     */
+    public void insertHeadNode(DoublyLinkedListNode node) {
+        // если head == null
+        if(head == null){
+            // приравниваем вставляемый элемент к голове списка
+            head = node;
+            // если last == null
+            if(last == null)
+                // приравниваем конец списка к вставляемому элементу
+                last = node;
+        } else {
+            // следующий вставляемого приравниваем голове списка
+            node.next = head;
+            // предыдущий головы списка приравниваем к вставляемому
+            head.prev = node;
+            // голову списка приравниваем к вставляемому элементу
+            head = node;
+
+        }
+        // увеличиваем счетчик
+        size++;
+    }
+
+    /**
      * Вставка в начала списка
      * @param value
      */
@@ -42,6 +68,30 @@ public class DoublyLinkedList {
 
         }
         // увеличиваем счетчик
+        size++;
+    }
+
+    /**
+     * Вставляем узел в конец списка
+     * @param node
+     */
+    public void insertLastNode(DoublyLinkedListNode node) {
+        if(last == null){
+            // приравниваем конец списка к вставляемому элементу
+            last = node;
+            // если head == null
+            if(head == null)
+                // голову списка приравниваем к вставляемому элементу
+                head = node;
+        } else {
+            // предыдущий вставляемого приравниваем к концу списка
+            node.prev = last;
+            // следующий конца списка приравниваем к вставляемому
+            last.next = node;
+            // приравниваем конец списка к вставляемому элементу
+            last = node;
+        }
+
         size++;
     }
 
@@ -74,20 +124,20 @@ public class DoublyLinkedList {
         size++;
     }
 
-    public void insertLastNode(DoublyLinkedListNode node) {
-        if(head == null){
-            DoublyLinkedListNode DoublyLinkedListNode = node;
-            head = DoublyLinkedListNode;
-            last = DoublyLinkedListNode;
-        } else {
-            DoublyLinkedListNode DoublyLinkedListNode = node;
-            DoublyLinkedListNode.prev = last;
-            last.next = DoublyLinkedListNode;
-            last = DoublyLinkedListNode;
-        }
-
-        size++;
-    }
+//    public void insertLastNode(DoublyLinkedListNode node) {
+//        if(head == null){
+//            DoublyLinkedListNode DoublyLinkedListNode = node;
+//            head = DoublyLinkedListNode;
+//            last = DoublyLinkedListNode;
+//        } else {
+//            DoublyLinkedListNode DoublyLinkedListNode = node;
+//            DoublyLinkedListNode.prev = last;
+//            last.next = DoublyLinkedListNode;
+//            last = DoublyLinkedListNode;
+//        }
+//
+//        size++;
+//    }
 
     /**
      * Удаляем элемент из головы списка
@@ -108,7 +158,7 @@ public class DoublyLinkedList {
     /**
      * Удаляем элемент из конца списка
      */
-    public void removeLast() {
+    public DoublyLinkedListNode removeLast() {
         // сохраняем во временную переменную конец списка
         DoublyLinkedListNode temp = last;
         // передвигаем конец списка к предыдущему элементу
@@ -117,6 +167,7 @@ public class DoublyLinkedList {
         last.next = null;
 
         size--;
+        return temp;
     }
 
     public DoublyLinkedListNode getHead() {
