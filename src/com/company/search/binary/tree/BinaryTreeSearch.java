@@ -23,6 +23,11 @@ public class BinaryTreeSearch {
         return resultFindByRange;
     }
 
+    /**
+     * Высота Binary Tree Search
+     * @param root
+     * @return
+     */
     public static int height(Node root)
     {
         if(root == null) {
@@ -32,6 +37,13 @@ public class BinaryTreeSearch {
         return 1 + Math.max(height(root.left), height(root.right));
     }
 
+    /**
+     * Построение дерева
+     * @param arr
+     * @param left
+     * @param right
+     * @return
+     */
     public static Node createTree(int[] arr, int left, int right) {
         if(left > right) {
             return null;
@@ -41,9 +53,12 @@ public class BinaryTreeSearch {
             return new Node(arr[left]);
         }
 
+        // запоминаем индекс среднего элемента
         int mid = (left + right) / 2;
         Node node = new Node(arr[mid]);
+        // создаём левое поддерево
         node.left = createTree(arr, left, mid - 1);
+        // создаём правое поддерево
         node.right = createTree(arr, mid + 1, right);
 
         return node;
@@ -64,13 +79,25 @@ public class BinaryTreeSearch {
         return result;
     }
 
+    /**
+     * Проверка существования элемента
+     * @param current
+     * @param search
+     * @return
+     */
     public static boolean find(Node current, int search) {
         while(true) {
+            // если искомое значение < current.value
             if(search < current.value) {
+                // то уходим в левое поддерево
                 current = current.left;
+            // если искомое значение > current.value
             } else if(search > current.value) {
+                // то уходим в правое поддерево
                 current = current.right;
+            // если искомое значение = current.value
             } else if(search == current.value) {
+                // то значит существует
                 return true;
             } else {
                 return false;
@@ -78,25 +105,44 @@ public class BinaryTreeSearch {
         }
     }
 
+    /**
+     * Поиск массива элементов
+     * @param current
+     * @param from
+     * @param to
+     * @param count
+     * @param result
+     * @return
+     */
     public static int[] findByRange(Node current, int from, int to, int count, int[] result) {
         if(current == null) {
             return new int[result.length];
         }
 
+        // если current.left != null
         if(current.left != null) {
+            // если значение от <= current.left.value + 1 и current.left.value <= значения до
             if(from <= current.left.value + 1 && current.left.value <= to) {
+                // то продолжаем по левому поддереву
                 findByRange(current.left, from, to, count, result);
             }
         }
+        // если значение от < current.left.value и current.left.value <= значения до
         if(from < current.value && current.value <= to) {
+            // находим не занятую ячейку
             while(result[count] != 0) {
                 ++count;
             }
+            // в эту ячейку вставляем элемент
             result[count] = current.value;
+            // увеличиваем счетчик на 1
             count++;
         }
+        // если current.right != null
         if(current.right != null) {
+            // если значение от <= current.left.value и current.left.value <= значения до
             if (from <= current.right.value && current.right.value <= to) {
+                // то продолжаем по правому поддереву
                 findByRange(current.right, from, to, count, result);
             }
         }
@@ -104,6 +150,36 @@ public class BinaryTreeSearch {
         return result;
     }
 
+    /**
+     * Добавление элемента в дерево
+     * @param current
+     * @param value
+     * @return
+     */
+    public static Node add(Node current, int value) {
+        if(current.value > value) {
+            if(current.left == null) {
+                current.left = new Node(value);
+            } else {
+                add(current.left, value);
+            }
+        } else {
+            if(current.right == null) {
+                current.right = new Node(value);
+            } else {
+                add(current.right, value);
+            }
+        }
+
+        return current;
+    }
+
+
+
+    /**
+     * Вывод дерева
+     * @param root
+     */
     public static void printTree(Node root) { // метод для вывода дерева в консоль
         Stack globalStack = new Stack(); // общий стек для значений дерева
         globalStack.push(root);

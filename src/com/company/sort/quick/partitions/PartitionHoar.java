@@ -6,23 +6,32 @@ public class PartitionHoar extends PartitionStrategy {
 
     public int Partition(int[] array, int left, int right) {
         // опорный элемент
-        int pivot = array[right];
-        // на еденицу меньше так как индекс ноль входит в массив
+        int pivot = array[(left + right) / 2];
+        // начальный элемень
         int i = left - 1;
+        // конечный элемент
+        int j = right + 1;
 
-        // идём по массиву до последнего индекса
-        for(int j = left; j < right; j++) {
-            // если array[j] < опорный элемент
-            if(array[j] < pivot) {
-                // увеличиваем на 1, меньший индекс
+        // пока left < right
+        while (i < j) {
+            // пробегаемся по всем элементам которые < опорного и запоминаем индекс
+            do{
                 i++;
-                // меняем местами
-                swap(array, i, j);
             }
+            while (array[i] < pivot);
+            // пробегаемся по всем элементам которые > опорного и запоминаем индекс
+            do{
+                j--;
+            }
+            while (array[j] > pivot);
+            // если left >= right
+            if(i >= j)
+                break;
+            // меняем местами left и right
+            swap(array, i, j);
         }
-        // меньший индекс меняем местами с большим
-        swap(array, i + 1, right);
-        return i + 1;
+
+        return j;
     }
 
 }
