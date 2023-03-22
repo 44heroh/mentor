@@ -1,5 +1,7 @@
 package com.company.hash.map;
 
+import java.util.Arrays;
+
 public class Solution {
 
     public static Object[] addToLinkedList(){
@@ -20,6 +22,8 @@ public class Solution {
         }
         hashMap.print();
         System.out.println(hashMap.get(1).toString());
+        System.out.println(hashMap.get(3).toString());
+        System.out.println(Arrays.toString(hashMap.getListKeys().getElements()));
         return new Object[0];
     }
 }
