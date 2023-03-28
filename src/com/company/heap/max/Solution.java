@@ -7,15 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
-@State(Scope.Benchmark)
 public class Solution {
 
-    // из массива найти 5 максимальных элементов(тесты которые это показывают([1-10][10-1][рандомный массив]))
-//    public static void main(String[] args) throws Exception {
-//        int[] nums = {1, 2, 4, 5, 6, 8, 9, 10, 11, 16, 20};
-//        int k = 5;
-////        findTopFiveElementsPriorityQueue(nums, k);
-//    }
+    public static void main(String[] args) throws Exception {
+
+    }
 
     public static Object[] addArrayToMaxHeap() {
         int[] nums = {1, 2, 4, 5, 6, 8, 9, 10, 11, 16, 20};
@@ -30,6 +26,7 @@ public class Solution {
             top[i] = maxHeap.peek();
             maxHeap.remove(maxHeap.peek());
             maxHeap.displayHeap();
+            System.out.println(Arrays.toString(top));
         }
 
         return top;
@@ -53,10 +50,6 @@ public class Solution {
         return top;
     }
 
-    @Fork(value = 1, warmups = 1)
-    @Warmup(iterations = 1)
-    @org.openjdk.jmh.annotations.Benchmark
-    @BenchmarkMode(Mode.All)
     public static Object[] addArrayRandomToMaxHeap() {
         int max = 100;
         int min = 1;
@@ -91,9 +84,23 @@ public class Solution {
     }
 
     public static Object[] addArrayOrderedToMaxHeapByArr() {
-        MaxHeapByArray maxHeap = new MaxHeapByArray<>(5);
-        for(int i = 0; i < 10; i++) {
+        MaxHeapByArray maxHeap = new MaxHeapByArray<>(4, false);
+        for(int i = 0; i < 11; i++) {
             maxHeap.add(i);
+            maxHeap.displayHeap();
+        }
+
+        maxHeap.displayHeap();
+        System.out.println(Arrays.toString(maxHeap.getList()));
+        return maxHeap.getList();
+    }
+
+    public static Object[] findMedianHeap() {
+        int size = 11;
+        MaxHeapByArray maxHeap = new MaxHeapByArray<>(size, true);
+        for(int i = 0; i < size; i++) {
+            maxHeap.add(i);
+            maxHeap.displayHeap();
         }
 
         maxHeap.displayHeap();
