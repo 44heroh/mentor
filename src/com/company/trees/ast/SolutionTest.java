@@ -18,10 +18,10 @@ class SolutionTest {
 //        Solution.printTree(node);
 //        Solution.Node node = solution.buildParseTree("(3+7)*(4*5)");
 //        Solution.printTree(node);
-        Solution.Node node = solution.buildParseTree("((3+2)+(7-4))*(4*5)");
+        Solution.Node node = solution.buildParseTree("(((3+2)+(7-4))*(4*5))");
         Solution.printTree(node);
         System.out.println();
-        List<Double> result = solution.calc(node, new ArrayList<Double>());
+        List<Double> result = solution.calc(node, new ArrayList<Double>(), node);
         Collections.sort(result, Collections.reverseOrder());
         System.out.println(result.toString());
     }

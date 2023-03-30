@@ -26,16 +26,18 @@ public class Solution {
 
     private double result = 0;
 
-    public Node buildParseTree(String expression) {
+    public Node buildParseTree1(String expression) {
         char[] chars = expression.toCharArray();
         System.out.println(Arrays.toString(chars));
         Node root = new Node(null);
         Stack<String> stack = new Stack<>();
         Node current = root;
         String[] operators = {"+", "-", "*", "/"};
+        Node parent = null;
 
         for(int i = 0; i < chars.length; i++) {
             String currentChar = "" + chars[i];
+
             if(currentChar.equals("(")) {
                 Node node = new Node(null);
                 if(current.left == null) {
@@ -70,6 +72,44 @@ public class Solution {
         return root.equals(null) ? root.left : root;
     }
 
+    public Node buildParseTree(String expression) {
+        char[] chars = expression.toCharArray();
+        System.out.println(Arrays.toString(chars));
+        Node root = new Node(null);
+        Stack<Node> stack = new Stack<>();
+        Node current = root;
+        String[] operators = {"+", "-", "*", "/"};
+        Node parent = null;
+        stack.push(root);
+
+        for(int i = 0; i < chars.length; i++) {
+            String currentChar = "" + chars[i];
+
+            if(currentChar.equals("(")) {
+                Node node = new Node("");
+                current.left = node;
+                stack.push(current);
+                current = current.left;
+            } else if(currentChar.equals(")")) {
+                current = stack.pop();
+            } else if(!Arrays.asList(operators).contains(currentChar)) {
+                current.value = currentChar;
+                parent = stack.pop();
+                current = parent;
+            } else if(Arrays.asList(operators).contains(currentChar) && !currentChar.equals(")")) {
+                Node node = new Node("");
+                current.value = currentChar;
+                current.right = node;
+                stack.push(current);
+                current = current.right;
+            }
+
+            printTree(current);
+        }
+
+        return root.equals(null) ? root.left : root;
+    }
+
     public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
@@ -79,14 +119,69 @@ public class Solution {
         }
     }
 
-    public List<Double> calc (Solution.Node current, List<Double> result) {
+
+    public List<Double> calc (Solution.Node current, List<Double> result, Solution.Node parent) {
         String[] operators = {"+", "-", "*", "/"};
         if(current == null)
             return result;
 
         if(current.left != null) {
             if(Arrays.asList(operators).contains((String) current.left.value))
-                calc(current.left, result);
+                calc(current.left, result, current);
+        }
+
+        if(Arrays.asList(operators).contains((String) current.value)
+                && current.visited == false
+                && !Arrays.asList(operators).contains((String) current.left.value)
+                && !Arrays.asList(operators).contains((String) current.right.value)
+        ){
+            double tmp = 0;
+            switch((String) current.value) {
+                case "+" :
+                    tmp = Double.valueOf((String) current.left.value) + Double.valueOf((String) current.right.value);
+                    break;
+                case "-" :
+                    tmp = Double.valueOf((String) current.left.value) - Double.valueOf((String) current.right.value);
+                    break;
+                case "*" :
+                    tmp = Double.valueOf((String) current.left.value) * Double.valueOf((String) current.right.value);
+                    break;
+                case "/" :
+                    tmp = Double.valueOf((String) current.left.value) / Double.valueOf((String) current.right.value);
+                    break;
+                default:
+                    break;
+            }
+            current.value = String.valueOf(tmp);
+            result.add(Double.valueOf((String) current.value));
+            current.visited = true;
+            current.left = null;
+            current.right = null;
+            if(parent != null) {
+                current = parent;
+            } else {
+                return result;
+            }
+
+            calc(current, result, parent);
+        }
+
+        if(current.right != null){
+            if(Arrays.asList(operators).contains((String) current.right.value))
+                calc(current.right, result, current);
+        }
+
+        return result;
+    }
+
+    public List<Double> calc1 (Solution.Node current, List<Double> result) {
+        String[] operators = {"+", "-", "*", "/"};
+        if(current == null)
+            return result;
+
+        if(current.left != null) {
+            if(Arrays.asList(operators).contains((String) current.left.value))
+                calc1(current.left, result);
         }
 
         if(Arrays.asList(operators).contains((String) current.value)
@@ -122,27 +217,15 @@ public class Solution {
                 return result;
             }
 
-            calc(current, result);
+            calc1(current, result);
         }
 
         if(current.right != null){
             if(Arrays.asList(operators).contains((String) current.right.value))
-                calc(current.right, result);
+                calc1(current.right, result);
         }
 
         return result;
-    }
-
-    public void calc1(Solution.Node current) {
-        String[] operators = {"+", "-", "*", "/"};
-        if(current == null)
-            return ;
-
-        if(Arrays.asList(operators).contains((String) current.value)) {
-            if(Arrays.asList(operators).contains((String) current.left.value)) {
-
-            }
-        }
     }
 
     /**
