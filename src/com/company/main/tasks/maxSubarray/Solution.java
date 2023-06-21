@@ -3,7 +3,7 @@ package com.company.main.tasks.maxSubarray;
 public class Solution {
 
     /**
-     *
+     * 53. Maximum Subarray https://leetcode.com/problems/maximum-subarray/
      * @param nums
      * @return
      */

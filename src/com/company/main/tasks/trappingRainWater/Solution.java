@@ -2,6 +2,11 @@ package com.company.main.tasks.trappingRainWater;
 
 public class Solution {
 
+    /**
+     * 42. Trapping Rain Water https://leetcode.com/problems/trapping-rain-water/
+     * @param arr
+     * @return
+     */
     public int trap(int[] arr) {
         int left = 0, right = arr.length - 1;
         int maxLeft = 0, maxRight = 0;

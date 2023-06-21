@@ -16,7 +16,6 @@ class NestedInteger {
         this.integer = null;
     }
 
-
     public List<NestedInteger> getList() {
         return list;
     }
@@ -38,7 +37,7 @@ public class Solution {
 
     private int ans;
     /**
-     *
+     * https://leetcode.com/problems/nested-list-weight-sum/ nested-list-weight-sum
      * @param list
      * @param depth
      * @return

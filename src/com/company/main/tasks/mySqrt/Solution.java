@@ -3,7 +3,7 @@ package com.company.main.tasks.mySqrt;
 public class Solution {
 
     /**
-     *
+     * 69. Sqrt(x) https://leetcode.com/problems/sqrtx/
      * @param x
      * @return
      */

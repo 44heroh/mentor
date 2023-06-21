@@ -5,6 +5,11 @@ import java.util.stream.Stream;
 
 public class Solution {
 
+    /**
+     * 17. Letter Combinations of a Phone Number https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+     * @param num
+     * @return
+     */
     public List<String> letterCombinations(int num) {
         int[] nums = Stream.of(String.valueOf(num).split(""))
                 .mapToInt(Integer::parseInt)

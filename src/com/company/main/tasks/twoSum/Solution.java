@@ -6,6 +6,12 @@ import java.util.Map;
 
 public class Solution {
 
+    /**
+     * 1. Two Sum https://leetcode.com/problems/two-sum/
+     * @param nums
+     * @param target
+     * @return
+     */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
