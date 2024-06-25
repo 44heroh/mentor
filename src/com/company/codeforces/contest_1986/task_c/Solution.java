@@ -25,24 +25,16 @@ public class Solution {
         char[] cArr = c.toCharArray();
         char[] sArr = s.toCharArray();
 
-        // Создаем список пар (индекс, символ)
-        List<Pair> updates = new ArrayList<>();
-        Arrays.sort(indexes);
-//        Arrays.sort(cArr);
-        for (int i = 0; i < m; i++) {
-            updates.add(new Pair(indexes[i], cArr[i]));
-        }
+        Arrays.sort(cArr);
+//        Arrays.sort(indexes);
 
-        // Сортируем по символу (лексикографически)
-        updates.sort(Comparator.comparing(pair -> pair.index));
-//        updates.sort(Comparator.comparing(pair -> pair.character));
+//        System.out.println(Arrays.toString(cArr));
+//        System.out.println(Arrays.toString(indexes));
 
-        // Преобразуем строку s в StringBuilder для удобства обновлений
         StringBuilder sb = new StringBuilder(s);
-
-        // Выполняем обновления
-        for (Pair update : updates) {
-            sb.setCharAt(update.index - 1, update.character);
+        for (int i = 0; i < m; i++) {
+            int idx = indexes[i] - 1;
+            sb.setCharAt(idx, cArr[i]);
         }
 
         return new String(sb);
