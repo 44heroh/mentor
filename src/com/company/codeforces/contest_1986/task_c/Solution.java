@@ -15,13 +15,13 @@ public class Solution {
         int[] nm = getArrayIntFromString(reader.readLine(), null);
         int n = nm[0], m = nm[1];
         String s = reader.readLine();
-        int[] indexes = getArrayIntFromString(reader.readLine(), null);
+        int[] ind = getArrayIntFromString(reader.readLine(), null);
         String c = reader.readLine();
 
-        System.out.println(solve(n, m, s, indexes, c));
+        System.out.println(solve(n, m, s, ind, c));
     }
 
-    private static String solve(int n, int m, String s, int[] indexes, String c) {
+    private static String solve(int n, int m, String s, int[] ind, String c) {
         char[] cArr = c.toCharArray();
         char[] sArr = s.toCharArray();
 
@@ -33,7 +33,7 @@ public class Solution {
 
         StringBuilder sb = new StringBuilder(s);
         for (int i = 0; i < m; i++) {
-            int idx = indexes[i] - 1;
+            int idx = ind[i] - 1;
             sb.setCharAt(idx, cArr[i]);
         }
 
