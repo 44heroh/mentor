@@ -1,7 +1,6 @@
-package com.company.codeforces.contes_1986.task_b;
+package com.company.codeforces.contest_1986.task_b;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
