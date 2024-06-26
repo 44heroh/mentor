@@ -1,11 +1,10 @@
 package com.company.codeforces.contest_1986.task_c;
 
+import com.company.codeforces.contest_1985.task_f.Pair;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
 
@@ -22,19 +21,22 @@ public class Solution {
     }
 
     private static String solve(int n, int m, String s, int[] ind, String c) {
-        char[] cArr = c.toCharArray();
-        char[] sArr = s.toCharArray();
+        char[] _c = c.toCharArray();
+        char[] _s = s.toCharArray();
 
-        Arrays.sort(cArr);
-//        Arrays.sort(indexes);
+        List<Pair> pairList = new ArrayList<>();
+        int[] cnt = new int[m];
 
-//        System.out.println(Arrays.toString(cArr));
-//        System.out.println(Arrays.toString(indexes));
-
-        StringBuilder sb = new StringBuilder(s);
         for (int i = 0; i < m; i++) {
-            int idx = ind[i] - 1;
-            sb.setCharAt(idx, cArr[i]);
+            pairList.add(new Pair(cnt[i]++, ind[i] - 1, _c[i]));
+        }
+
+        Arrays.sort(_c);
+//        pairList.sort(Comparator.comparing(pair -> pair.index));
+        StringBuilder sb = new StringBuilder(s);
+
+        for (int i = m - 1; i >= 0; i--) {
+            sb.setCharAt(pairList.get(i).index, _c[i]);
         }
 
         return new String(sb);
@@ -53,12 +55,23 @@ public class Solution {
     }
 
     static class Pair {
+        int count;
         int index;
         char character;
 
-        Pair(int index, char character) {
+        public Pair(int count, int index, char character) {
+            this.count = count;
             this.index = index;
             this.character = character;
+        }
+
+        @Override
+        public String toString() {
+            return "Pair{" +
+                    "count=" + count +
+                    ", index=" + index +
+                    ", character=" + character +
+                    '}';
         }
     }
 }
