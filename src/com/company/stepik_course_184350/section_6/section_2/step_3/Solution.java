@@ -1,7 +1,6 @@
-package com.company.stepik_course_184350.section_6.section_2.step_2;
+package com.company.stepik_course_184350.section_6.section_2.step_3;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
