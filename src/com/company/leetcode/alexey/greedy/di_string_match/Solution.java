@@ -1,4 +1,4 @@
-package com.company.leetcode.alexey.di_string_match;
+package com.company.leetcode.alexey.greedy.di_string_match;
 
 public class Solution {
 

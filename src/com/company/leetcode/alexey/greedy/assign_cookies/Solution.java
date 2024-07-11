@@ -1,4 +1,4 @@
-package com.company.leetcode.alexey.assign_cookies;
+package com.company.leetcode.alexey.greedy.assign_cookies;
 
 import java.util.Arrays;
 

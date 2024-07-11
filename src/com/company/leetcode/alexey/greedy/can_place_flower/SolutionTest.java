@@ -1,8 +1,6 @@
-package com.company.leetcode.alexey.can_place_flower;
+package com.company.leetcode.alexey.greedy.can_place_flower;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 

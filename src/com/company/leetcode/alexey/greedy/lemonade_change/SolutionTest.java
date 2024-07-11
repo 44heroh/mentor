@@ -1,9 +1,6 @@
-package com.company.leetcode.alexey.lemonade_change;
+package com.company.leetcode.alexey.greedy.lemonade_change;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 class SolutionTest {
 

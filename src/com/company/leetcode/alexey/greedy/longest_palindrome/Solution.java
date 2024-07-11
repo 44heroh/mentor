@@ -1,6 +1,5 @@
-package com.company.leetcode.alexey.longest_palindrome;
+package com.company.leetcode.alexey.greedy.longest_palindrome;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

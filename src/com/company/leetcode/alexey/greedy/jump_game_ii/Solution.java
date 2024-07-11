@@ -1,4 +1,4 @@
-package com.company.leetcode.alexey.jump_game_ii;
+package com.company.leetcode.alexey.greedy.jump_game_ii;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +33,26 @@ public class Solution {
      * @return
      */
     public int jump(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0] == 0 ? 0 : 1;
+        }
+
+        int n = nums.length, l = 0, r = 0, jumps = 0;
+
+        while (r < n - 1) {
+            int newRight = 0;
+            for (int i = l; i < r + 1; i++) {
+                newRight = Math.max(newRight, i + nums[i]);
+            }
+            l = r + 1;
+            r = newRight;
+            jumps++;
+        }
+
+        return jumps;
+    }
+
+    public int jump2(int[] nums) {
         if (nums.length == 1) {
             return nums[0] == 0 ? 0 : 1;
         }

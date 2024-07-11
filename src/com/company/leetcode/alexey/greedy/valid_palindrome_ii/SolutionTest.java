@@ -1,8 +1,6 @@
-package com.company.leetcode.alexey.valid_palindrome_ii;
+package com.company.leetcode.alexey.greedy.valid_palindrome_ii;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 

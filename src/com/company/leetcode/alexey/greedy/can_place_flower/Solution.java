@@ -1,6 +1,4 @@
-package com.company.leetcode.alexey.can_place_flower;
-
-import java.util.Arrays;
+package com.company.leetcode.alexey.greedy.can_place_flower;
 
 public class Solution {
 

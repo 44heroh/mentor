@@ -1,6 +1,4 @@
-package com.company.leetcode.alexey.lemonade_change;
-
-import java.util.*;
+package com.company.leetcode.alexey.greedy.lemonade_change;
 
 public class Solution {
 

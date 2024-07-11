@@ -1,4 +1,4 @@
-package com.company.leetcode.alexey.array_partition;
+package com.company.leetcode.alexey.greedy.array_partition;
 
 import java.util.ArrayList;
 import java.util.Arrays;

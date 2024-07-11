@@ -1,9 +1,6 @@
-package com.company.leetcode.alexey.valid_palindrome_ii;
+package com.company.leetcode.alexey.greedy.valid_palindrome_ii;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Solution {
 

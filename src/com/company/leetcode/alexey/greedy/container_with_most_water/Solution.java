@@ -1,4 +1,4 @@
-package com.company.leetcode.alexey.container_with_most_water;
+package com.company.leetcode.alexey.greedy.container_with_most_water;
 
 public class Solution {
 

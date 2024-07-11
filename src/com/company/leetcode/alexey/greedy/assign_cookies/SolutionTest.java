@@ -1,8 +1,6 @@
-package com.company.leetcode.alexey.assign_cookies;
+package com.company.leetcode.alexey.greedy.assign_cookies;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 

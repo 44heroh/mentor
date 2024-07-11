@@ -1,8 +1,6 @@
-package com.company.leetcode.alexey.longest_palindrome;
+package com.company.leetcode.alexey.greedy.longest_palindrome;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 

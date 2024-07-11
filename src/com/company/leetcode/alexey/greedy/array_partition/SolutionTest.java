@@ -1,8 +1,6 @@
-package com.company.leetcode.alexey.array_partition;
+package com.company.leetcode.alexey.greedy.array_partition;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 

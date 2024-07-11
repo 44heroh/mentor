@@ -1,8 +1,6 @@
-package com.company.leetcode.alexey.jump_game_ii;
+package com.company.leetcode.alexey.greedy.jump_game_ii;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 

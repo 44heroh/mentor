@@ -1,10 +1,8 @@
-package com.company.leetcode.alexey.di_string_match;
+package com.company.leetcode.alexey.greedy.di_string_match;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 
