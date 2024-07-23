@@ -33,6 +33,22 @@ public class Solution {
      */
     public int eraseOverlapIntervals(int[][] intervals) {
         int n = intervals.length;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[1], b[1]));
+
+        int prev = 0, ans = 1;
+
+        for (int i = 1; i < n; i++) {
+            if (intervals[i][0] >= intervals[prev][1]) {
+                prev = i;
+                ans++;
+            }
+        }
+
+        return n - ans;
+    }
+
+    public int eraseOverlapIntervals1(int[][] intervals) {
+        int n = intervals.length;
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
